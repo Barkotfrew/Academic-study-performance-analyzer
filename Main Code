@@ -54,3 +54,36 @@ void initializeDatabase() {
 
     executeSQL(createTableSQL);
 }
+void addStudent() {
+    system("cls");
+    Student s;
+    s.totalHours = 0;
+
+    cout << "Enter student name: ";
+    cin >> s.name;
+    cout << "Enter student code: ";
+    cin >> s.studentCode;
+
+    for (int i = 0; i < 7; ++i) {
+        int hours;
+        do {
+            cout << "Enter study hours for day " << i + 1 << " (<=24): ";
+            cin >> hours;
+        } while (hours < 0 || hours > 24);
+        s.day[i] = hours;
+        s.totalHours += hours;
+    }
+
+    s.averageHours = static_cast<double>(s.totalHours) / 7.0;
+
+    string insertSQL = "INSERT INTO students (studentCode, name, day1, day2, day3, day4, day5, day6, day7, totalHours, averageHours) VALUES (" +
+        to_string(s.studentCode) + ", '" + s.name + "', " +
+        to_string(s.day[0]) + ", " + to_string(s.day[1]) + ", " +
+        to_string(s.day[2]) + ", " + to_string(s.day[3]) + ", " +
+        to_string(s.day[4]) + ", " + to_string(s.day[5]) + ", " +
+        to_string(s.day[6]) + ", " + to_string(s.totalHours) + ", " +
+        to_string(s.averageHours) + ");";
+
+    executeSQL(insertSQL);
+    cout << "Student added successfully!" << endl;
+}
