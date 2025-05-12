@@ -40,19 +40,6 @@ Barkot Frew (@Barkotfrew)
 
 Contributions:  Assisted with the development of the code,readme file and documentation,also contributed to create a sample of the user interface and experience design.
 
-## Introduction
-
-Are you a student wanting to easily track your study hours and see your study pattern during the week? The Academic Study Performance Analyzer is a C++ program designed to assist second-year Software Engineering students in tracking their daily study hours leading up to final exams. By recording study hours each day, students can better organize their study schedules.
-
-Students often record their daily study time in notebooks but struggle to summarize and analyze this data. This program allows students to input their study hours for each day of the week and generates a report showing the study hours for each day, the total weekly study hours, and the average study hours per day.
-
-## What This Program Does
-
-Have you ever written down your study hours in a notebook and then struggled to understand your overall study habits? This program helps you:                       
-
-Add student: Collects student data and stores it in the database.
-
-See results: Displays all students and their study statistics.
 
 Search student: Allows searching by student name or code.
 
