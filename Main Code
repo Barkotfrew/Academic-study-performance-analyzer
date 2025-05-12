@@ -269,5 +269,21 @@ int main() {
         cout << "Enter your choice: ";
         int choice;
         cin >> choice;
+
+        if (choice == 1) addStudent();
+        else if (choice == 2) seeResults();
+        else if (choice == 3) searchStudent();
+        else if (choice == 4) deleteStudent();
+        else if (choice == 5) generateConclusion();
+        else if (choice == 6) editStudentHours();
+        else if (choice == 7) {
+            cout << "Goodbye!" << endl;
+            sqlite3_close(db);
+            break;
+        } else {
+            cout << "Invalid choice. Try again." << endl;
+        }
+    }
+
 return 0;
 }
