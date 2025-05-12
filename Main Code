@@ -156,3 +156,46 @@ void generateConclusion() {
 
     sqlite3_finalize(stmt);
 }
+void searchStudent() {
+    system("cls");
+    cout << "1. Search by name\n2. Search by code\nEnter choice: ";
+    int choice;
+    cin >> choice;
+
+    string query;
+    if (choice == 1) {
+        string name;
+        cout << "Enter student name: ";
+        cin >> name;
+        query = "SELECT * FROM students WHERE name = '" + name + "';";
+    } else {
+        int code;
+        cout << "Enter student code: ";
+        cin >> code;
+        query = "SELECT * FROM students WHERE studentCode = " + to_string(code) + ";";
+    }
+
+    int rc = sqlite3_prepare_v2(db, query.c_str(), -1, &stmt, 0);
+    if (rc != SQLITE_OK) {
+        cerr << "Failed to fetch student." << endl;
+        return;
+    }
+
+    if (sqlite3_step(stmt) == SQLITE_ROW) {
+        const char* name = (const char*)sqlite3_column_text(stmt, 1);
+        int code = sqlite3_column_int(stmt, 0);
+        int total = sqlite3_column_int(stmt, 8);
+        double avg = sqlite3_column_double(stmt, 9);
+
+        cout << "\nStudent: " << name << " (Code: " << code << ")\n";
+        cout << "Total Hours: " << total << ", Average: " << fixed << setprecision(2) << avg << endl;
+        cout << "Daily Hours: ";
+        for (int i = 0; i < 7; ++i)
+            cout << sqlite3_column_int(stmt, 2 + i) << (i < 6 ? ", " : "");
+        cout << endl;
+    } else {
+        cout << "Student not found." << endl;
+    }
+
+    sqlite3_finalize(stmt);
+}
