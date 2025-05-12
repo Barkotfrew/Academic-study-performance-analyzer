@@ -110,3 +110,7 @@ Once the program is running, it will ask you for some information:
 ## Contributing
 
 If you have coding experience and want to help improve this program, here's how:
+
+1. Get a Copy of the Code: Make a copy of this project by clicking the "Fork" button on GitHub.
+2. Make Your Changes: Add new features, fix bugs, or improve the code as you like.
+3. Test Your Changes: Make sure that your changes don't break the program.
