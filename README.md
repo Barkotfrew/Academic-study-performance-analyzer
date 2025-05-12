@@ -90,3 +90,20 @@ A Computer: You need a computer to run this program.
 C++ Compiler: You will need a C++ compiler to build and run the program. If you don’t have one, there are many available like GCC or Visual Studio.
 
 SQLite: This program uses SQLite to store the study data. You will need to ensure the SQLite library is set up correctly.
+## How to Use the Program
+
+Once the program is running, it will ask you for some information:
+
+1. Number of Students: The program will first ask for the number of students you are tracking the information for.
+2. Student Data: For each student, the program will ask for the student name or ID, and the number of hours they studied for each day of the week (from Day 1 to Day 7).
+3. Results Table: After you've entered all the student information, the program will show you a table with your data organized in a way that makes it easy to understand and see the overall weekly study patterns.
+4. Search Data: After all the data has been entered, you can search for a particular student using their name or student ID.
+
+### Step-by-Step Instructions
+
+1. Enter the Number of Students: When the program starts, it will first ask you how many students you want to track the data for.
+2. Enter Each Student's Data:
+   - The program will then ask for the name or student ID of each student.
+   - After that, it will ask for the study hours for each day of the week (Day 1 to Day 7) for each student.
+3. See the Results Table: Once you’ve entered all the information, the program will display a table with all the data you entered, the total weekly study time for each student, and the overall daily average.
+4. Search for a Student: The program will ask if you would like to search for the data of a particular student. If you answer yes, you will be prompted to enter the name or ID of the student that you are looking for.
