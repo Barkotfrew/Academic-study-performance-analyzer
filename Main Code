@@ -1,1 +1,56 @@
+#include <iostream>
+#include <iomanip>
+#include "sqlite3.h"
+#include <string>
+#include <windows.h>
 
+using namespace std;
+
+struct Student {
+    int studentCode;
+    string name;
+    int day[7];
+    int totalHours;
+    double averageHours;
+};
+
+sqlite3* db;
+sqlite3_stmt* stmt;
+
+const char* DB_NAME = "student_academic_tracker.db";
+
+int executeSQL(const string& sql) {
+    char* errMsg = nullptr;
+    int rc = sqlite3_exec(db, sql.c_str(), nullptr, nullptr, &errMsg);
+    if (rc != SQLITE_OK) {
+        cerr << "SQL Error: " << errMsg << endl;
+        sqlite3_free(errMsg);
+    }
+    return rc;
+}
+
+void initializeDatabase() {
+    int rc = sqlite3_open(DB_NAME, &db);
+    if (rc) {
+        cerr << "Can't open database: " << sqlite3_errmsg(db) << endl;
+        exit(0);
+    }
+
+    string createTableSQL = R"(
+        CREATE TABLE IF NOT EXISTS students (
+            studentCode INTEGER PRIMARY KEY,
+            name TEXT,
+            day1 INTEGER,
+            day2 INTEGER,
+            day3 INTEGER,
+            day4 INTEGER,
+            day5 INTEGER,
+            day6 INTEGER,
+            day7 INTEGER,
+            totalHours INTEGER,
+            averageHours REAL
+        );
+    )";
+
+    executeSQL(createTableSQL);
+}
