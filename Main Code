@@ -199,3 +199,58 @@ void searchStudent() {
 
     sqlite3_finalize(stmt);
 }
+void deleteStudent() {
+    system("cls");
+    int code;
+    cout << "Enter student ID/code to delete: ";
+    cin >> code;
+
+    string deleteSQL = "DELETE FROM students WHERE studentCode = " + to_string(code) + ";";
+    executeSQL(deleteSQL);
+
+    cout << "Student deleted successfully." << endl;
+}
+
+void editStudentHours() {
+    system("cls");
+    int code;
+    cout << "Enter student code to edit: ";
+    cin >> code;
+
+    string checkSQL = "SELECT * FROM students WHERE studentCode = " + to_string(code) + ";";
+    int rc = sqlite3_prepare_v2(db, checkSQL.c_str(), -1, &stmt, 0);
+    if (rc != SQLITE_OK || sqlite3_step(stmt) != SQLITE_ROW) {
+        cout << "Student not found." << endl;
+        sqlite3_finalize(stmt);
+        return;
+    }
+
+    sqlite3_finalize(stmt);
+
+    Student s;
+    s.studentCode = code;
+    s.totalHours = 0;
+
+    for (int i = 0; i < 7; ++i) {
+        cout << "Enter new hours for day " << i + 1 << ": ";
+        cin >> s.day[i];
+        s.totalHours += s.day[i];
+    }
+
+    s.averageHours = s.totalHours / 7.0;
+   string updateSQL = "UPDATE students SET "
+        "day1 = " + to_string(s.day[0]) + ", "
+        "day2 = " + to_string(s.day[1]) + ", "
+        "day3 = " + to_string(s.day[2]) + ", "
+        "day4 = " + to_string(s.day[3]) + ", "
+        "day5 = " + to_string(s.day[4]) + ", "
+        "day6 = " + to_string(s.day[5]) + ", "
+        "day7 = " + to_string(s.day[6]) + ", "
+        "totalHours = " + to_string(s.totalHours) + ", "
+        "averageHours = " + to_string(s.averageHours) +
+        " WHERE studentCode = " + to_string(s.studentCode) + ";";
+
+    executeSQL(updateSQL);
+    cout << "Study hours updated successfully." << endl;
+}
+    
