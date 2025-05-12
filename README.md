@@ -9,11 +9,9 @@ Prepared by: SWEG Section A (2017/25)
 4. [Key Features](#key-features)
 5. [Getting Started](#getting-started)
    - [What You Need](#what-you-need)
-   - [Installing and Running the Program](#installing-and-running-the-program)
 6. [How to Use the Program](#how-to-use-the-program)
    - [Step-by-Step Instructions](#step-by-step-instructions)
-7. [Example Input and Output](#example-input-and-output)
-8. [Contributing](#contributing)
+7. [Contributing](#contributing)
    
 ## Credits
 
