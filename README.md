@@ -107,3 +107,4 @@ Once the program is running, it will ask you for some information:
    - After that, it will ask for the study hours for each day of the week (Day 1 to Day 7) for each student.
 3. See the Results Table: Once you’ve entered all the information, the program will display a table with all the data you entered, the total weekly study time for each student, and the overall daily average.
 4. Search for a Student: The program will ask if you would like to search for the data of a particular student. If you answer yes, you will be prompted to enter the name or ID of the student that you are looking for.
+## Contributing
