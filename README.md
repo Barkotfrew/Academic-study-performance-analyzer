@@ -14,7 +14,31 @@ Prepared by: SWEG Section A (2017/25)
 7. [Contributing](#contributing)
    
 ## Credits
+Here are the contributors to the "Academic-Analyzer-project" repository along with their contributions:
 
+Arsema Seife (@Arsema137)
+
+Contributions: Assisted with the development of the code and readme file,also contributed to the documentation.
+
+Abenezer Shiferaw (@Abinishifex)
+
+Contributions: Assisted with the development of the code and flow chart,also contributed to the documentation.
+
+Beamlak Atilabachaw (@labba1)
+
+Contributions: Project lead,contributed to the documentation and Assisted with the development of the code and read me file.
+
+Barkot Zerihun (@BarkiZed)
+
+Contributions: Assisted with the development of the code,read me file also the documentation and created detailed samples of the output for the users.
+
+Abigiya Fikru (@AbigiyaFikru)
+
+Contributions: Assisted with the development of the code,read me file and documentation, also provided quality assurance of the program.
+
+Barkot Frew (@Barkotfrew)
+
+Contributions:  Assisted with the development of the code,readme file and documentation,also contributed to create a sample of the user interface and experience design.
 
 ## Introduction
 
