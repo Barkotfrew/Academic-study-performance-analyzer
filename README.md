@@ -66,6 +66,13 @@ Edit student hours: Modifies a student's study hours and recalculates totals.
 ## Key Features
 Here's what this program can do:
 
+Data Storage: Stores student names, IDs, and study hours for each of the 7 days of the week.
+
+Calculations:Computes total study hours for each student.
+
+Calculates the average daily study hours for each student.
+
+Search Functionality: Allows users to search for a student by their name or ID.
 
 Formatted Output: Displays the results in a clean tabular format for easy analysis.
 
