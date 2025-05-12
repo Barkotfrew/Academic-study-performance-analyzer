@@ -87,3 +87,72 @@ void addStudent() {
     executeSQL(insertSQL);
     cout << "Student added successfully!" << endl;
 }
+
+void seeResults() {
+    system("cls");
+    string query = "SELECT name, studentCode, totalHours, averageHours, day1, day2, day3, day4, day5, day6, day7 FROM students;";
+    int rc = sqlite3_prepare_v2(db, query.c_str(), -1, &stmt, 0);
+    if (rc != SQLITE_OK) {
+        cerr << "Failed to fetch data." << endl;
+        return;
+    }
+
+    cout << "---------------------------------------------------------------------------------------------" << endl;
+    cout << "| Name        | Code | Total | Avg  | Day 1 | Day 2 | Day 3 | Day 4 | Day 5 | Day 6 | Day 7 |" << endl;
+    cout << "---------------------------------------------------------------------------------------------" << endl;
+
+    while (sqlite3_step(stmt) == SQLITE_ROW) {
+        const char* name = (const char*)sqlite3_column_text(stmt, 0);
+        int code = sqlite3_column_int(stmt, 1);
+        int total = sqlite3_column_int(stmt, 2);
+        double avg = sqlite3_column_double(stmt, 3);
+
+        cout << "| " << setw(11) << left << name << " | "
+             << setw(4) << code << " | "
+             << setw(5) << total << " | "
+             << setw(4) << fixed << setprecision(2) << avg << " | ";
+
+        for (int i = 0; i < 7; ++i)
+            cout << setw(5) << sqlite3_column_int(stmt, 4 + i) << " | ";
+
+        cout << endl;
+    }
+
+    cout << "---------------------------------------------------------------------------------------------" << endl;
+    sqlite3_finalize(stmt);
+    system("Pause");
+}
+
+void generateConclusion() {
+    system("cls");
+    string query = "SELECT name, totalHours FROM students;";
+    int rc = sqlite3_prepare_v2(db, query.c_str(), -1, &stmt, 0);
+    if (rc != SQLITE_OK) {
+        cerr << "Failed to fetch total study hours." << endl;
+        return;
+    }
+
+    string topStudentName;
+    int topStudentHours = 0;
+
+    cout << "\nConclusion: Who studies the most?" << endl;
+    while (sqlite3_step(stmt) == SQLITE_ROW) {
+        const char* name = (const char*)sqlite3_column_text(stmt, 0);
+        int totalHours = sqlite3_column_int(stmt, 1);
+
+        cout << name << " has studied " << totalHours << " hours in total." << endl;
+
+        if (totalHours > topStudentHours) {
+            topStudentHours = totalHours;
+            topStudentName = name;
+        }
+    }
+
+    if (!topStudentName.empty()) {
+        cout << "\nThe student who studies the most is " << topStudentName << " with " << topStudentHours << " total study hours." << endl;
+    } else {
+        cout << "No data available to determine the top student." << endl;
+    }
+
+    sqlite3_finalize(stmt);
+}
